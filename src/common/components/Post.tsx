@@ -19,7 +19,11 @@ const Post: React.FC<PostProps> = ({ post, number }) => {
   });
 
   let titleElement;
-  let hostnameElement;
+  let hostnameElement = (
+    <span className="text-xs font-normal text-black text-opacity-50 dark:text-white dark:text-opacity-50">
+      (text post)
+    </span>
+  );
 
   if (post.url) {
     try {
