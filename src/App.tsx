@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage";
-import ListPage, { ListPageType } from "./pages/NewestPage";
+import ListPage, { ListPageType } from "./pages/ListPage";
 import Header from "./common/components/Header";
 import Footer from "./common/components/Footer";
 import { useDispatch, useSelector } from "react-redux";
