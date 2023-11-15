@@ -16,8 +16,8 @@ const Header: React.FC<HeaderProps> = () => {
   );
 
   const logo = darkModeEnabled ? logoDark : logoLight;
-  const setDark = () => dispatch(setDarkMode(false));
-  const setLight = () => dispatch(setDarkMode(true));
+  const setDark = () => dispatch(setDarkMode(true));
+  const setLight = () => dispatch(setDarkMode(false));
 
   return (
     <header>
