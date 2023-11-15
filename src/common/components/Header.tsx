@@ -30,15 +30,21 @@ const Header: React.FC<HeaderProps> = () => {
         <div className="flex items-center">
           {" "}
           {darkModeEnabled ? (
-            <IoSunny
-              className="text-yellow-500 cursor-pointer"
+            <button
+              aria-label="Activate light mode"
+              className="p-2"
               onClick={setLight}
-            />
+            >
+              <IoSunny className="text-yellow-500" />
+            </button>
           ) : (
-            <IoMoonSharp
-              className="text-black cursor-pointer"
+            <button
+              aria-label="Activate dark mode"
+              className="p-2"
               onClick={setDark}
-            />
+            >
+              <IoMoonSharp className="text-black" />
+            </button>
           )}
         </div>
       </nav>
