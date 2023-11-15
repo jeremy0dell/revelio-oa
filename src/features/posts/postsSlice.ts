@@ -13,6 +13,8 @@ const initialState: PostsState = {
   error: null,
 };
 
+// actions are automatically created for these async functions
+// actions are automatically dispatched based on the state of the promise returned
 export const fetchStarredPosts = createAsyncThunk<Story[], number, { rejectValue: string, state: RootState, dispatch: Dispatch }>(
   'posts/fetchStarredPosts',
   async (page, { rejectWithValue, getState, dispatch }) => {

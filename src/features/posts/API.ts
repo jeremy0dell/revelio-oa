@@ -6,6 +6,7 @@ import { Dispatch } from '@reduxjs/toolkit';
 export const HACKER_NEWS_API = 'https://hacker-news.firebaseio.com/v0';
 export const pageSize = 12;
 
+// fetches single story
 export const fetchStoryById = async (id: number): Promise<Story | undefined> => {
   try {
     const res = await axios.get<Story>(`${HACKER_NEWS_API}/item/${id}.json`);
@@ -16,7 +17,7 @@ export const fetchStoryById = async (id: number): Promise<Story | undefined> => 
   }
 };
 
-
+// fetches all stories from list
 export const fetchPosts = async (page: number, list: number[], dispatch: Dispatch, reject: (value: string) => any) => {
     try {
       const startIndex = (page - 1) * pageSize;

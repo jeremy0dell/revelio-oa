@@ -16,6 +16,8 @@ const Header: React.FC<HeaderProps> = () => {
   );
 
   const logo = darkModeEnabled ? logoDark : logoLight;
+  const setDark = () => dispatch(setDarkMode(false));
+  const setLight = () => dispatch(setDarkMode(true));
 
   return (
     <header>
@@ -30,12 +32,12 @@ const Header: React.FC<HeaderProps> = () => {
           {darkModeEnabled ? (
             <IoSunny
               className="text-yellow-500 cursor-pointer"
-              onClick={() => dispatch(setDarkMode(false))}
+              onClick={setLight}
             />
           ) : (
             <IoMoonSharp
               className="text-black cursor-pointer"
-              onClick={() => dispatch(setDarkMode(true))}
+              onClick={setDark}
             />
           )}
         </div>

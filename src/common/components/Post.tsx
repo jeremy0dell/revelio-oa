@@ -18,6 +18,7 @@ const Post: React.FC<PostProps> = ({ post, number }) => {
     addSuffix: true,
   });
 
+  /** Format title and host name start */
   let titleElement;
   let hostnameElement = (
     <span className="text-xs font-normal text-black text-opacity-50 dark:text-white dark:text-opacity-50">
@@ -60,6 +61,7 @@ const Post: React.FC<PostProps> = ({ post, number }) => {
       <span className="font-bold text-md lg:text-lg">{post.title}</span>
     );
   }
+  /** Format title and host name end */
 
   const savedPosts = useSelector((state: RootState) => state.posts.starred);
   const isSaved = savedPosts.includes(post.id);

@@ -17,6 +17,8 @@ const App = () => {
   );
 
   useEffect(() => {
+    // tailwind is configured to use class for dark-mode
+    // configured in tailwind.config.js
     const className = "dark";
     if (darkModeEnabled) {
       document.documentElement.classList.add(className);

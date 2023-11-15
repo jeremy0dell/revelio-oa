@@ -4,6 +4,7 @@ interface SettingsState {
     darkModeEnabled: boolean
 }
 
+// prefer mode in storage, then check user preference
 const initialState: SettingsState = {
     darkModeEnabled: localStorage.getItem('darkMode') === 'true' || window.matchMedia('(prefers-color-scheme: dark)').matches
 }
