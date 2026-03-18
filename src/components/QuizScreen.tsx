@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { QuizAnswer } from "@/lib/types";
 import { MCQ_QUESTIONS } from "@/lib/mcqQuestions";
 import MCQQuestion from "./quiz/MCQQuestion";
+import Q6InterpretiveBudget from "./quiz/Q6InterpretiveBudget";
 import Q1PhraseArc from "./quiz/Q1PhraseArc";
 import Q8DangerSlider from "./quiz/Q8DangerSlider";
 
@@ -11,10 +12,29 @@ interface Props {
   onAnswer: (answer: QuizAnswer) => void;
 }
 
-const TOTAL_QUESTIONS = 8;
+const TOTAL_QUESTIONS = 9;
 
 export default function QuizScreen({ questionIndex, onAnswer }: Props) {
-  const isMCQ = questionIndex < 6;
+  const renderQuestion = () => {
+    if (questionIndex < 6) {
+      return (
+        <MCQQuestion
+          question={MCQ_QUESTIONS[questionIndex]}
+          onAnswer={onAnswer}
+        />
+      );
+    }
+    switch (questionIndex) {
+      case 6:
+        return <Q6InterpretiveBudget onAnswer={onAnswer} />;
+      case 7:
+        return <Q1PhraseArc onAnswer={onAnswer} />;
+      case 8:
+        return <Q8DangerSlider onAnswer={onAnswer} />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <motion.div
@@ -48,16 +68,7 @@ export default function QuizScreen({ questionIndex, onAnswer }: Props) {
           transition={{ duration: 0.4 }}
           className="flex-1 flex flex-col"
         >
-          {isMCQ ? (
-            <MCQQuestion
-              question={MCQ_QUESTIONS[questionIndex]}
-              onAnswer={onAnswer}
-            />
-          ) : questionIndex === 6 ? (
-            <Q1PhraseArc onAnswer={onAnswer} />
-          ) : (
-            <Q8DangerSlider onAnswer={onAnswer} />
-          )}
+          {renderQuestion()}
         </motion.div>
       </div>
     </motion.div>
