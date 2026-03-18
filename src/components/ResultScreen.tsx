@@ -1,4 +1,3 @@
-"use client";
 
 import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
@@ -15,8 +14,8 @@ interface Props {
 const MEMBER_EMOJI: Record<string, string> = {
   angela: "🎻",
   justin: "🎻",
-  sharon: "🎶",
-  pedro: "🎻",
+  benjamin: "🎶",
+  russell: "🎻",
 };
 
 export default function ResultScreen({ result, onRetake, onViewMembers }: Props) {

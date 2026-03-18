@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { QuizAnswer } from "@/lib/types";
@@ -41,7 +39,6 @@ export default function Q6InterpretiveBudget({ onAnswer }: Props) {
     const traitDeltas: QuizAnswer["traitDeltas"] = {};
     const tags: QuizAnswer["tags"] = [];
 
-    // Map budget traits to hidden axes
     const norm = (v: number) => v / TOTAL;
 
     traitDeltas.emotionalWarmth = norm(values.warmth) * 0.4;
@@ -55,7 +52,6 @@ export default function Q6InterpretiveBudget({ onAnswer }: Props) {
     traitDeltas.charismaTheatricality = norm(values.intensity) * 0.3;
     traitDeltas.rhythmicDecisiveness = norm(values.intensity) * 0.2;
 
-    // Check concentration vs spread
     const vals = Object.values(values);
     const maxVal = Math.max(...vals);
     const minVal = Math.min(...vals);

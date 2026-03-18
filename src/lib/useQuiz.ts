@@ -1,4 +1,3 @@
-"use client";
 
 import { useCallback, useState } from "react";
 import { QuizAnswer, QuizPhase, QuizResult } from "./types";
@@ -31,7 +30,7 @@ export function useQuiz() {
     setState((s) => {
       const answers = [...s.answers, answer];
       const nextIndex = s.questionIndex + 1;
-      if (nextIndex >= 8) {
+      if (nextIndex >= 9) {
         const result = computeResult(answers);
         return { ...s, answers, questionIndex: nextIndex, phase: "analysis", result };
       }

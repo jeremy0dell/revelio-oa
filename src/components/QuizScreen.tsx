@@ -1,14 +1,10 @@
-"use client";
 
 import { motion } from "framer-motion";
 import { QuizAnswer } from "@/lib/types";
-import Q1PhraseArc from "./quiz/Q1PhraseArc";
-import Q2RehearsalPriorities from "./quiz/Q2RehearsalPriorities";
-import Q3FestivalBag from "./quiz/Q3FestivalBag";
-import Q4PulseTest from "./quiz/Q4PulseTest";
-import Q5SustainTest from "./quiz/Q5SustainTest";
+import { MCQ_QUESTIONS } from "@/lib/mcqQuestions";
+import MCQQuestion from "./quiz/MCQQuestion";
 import Q6InterpretiveBudget from "./quiz/Q6InterpretiveBudget";
-import Q7RescueRehearsal from "./quiz/Q7RescueRehearsal";
+import Q1PhraseArc from "./quiz/Q1PhraseArc";
 import Q8DangerSlider from "./quiz/Q8DangerSlider";
 
 interface Props {
@@ -16,20 +12,29 @@ interface Props {
   onAnswer: (answer: QuizAnswer) => void;
 }
 
-const QUESTIONS = [
-  Q1PhraseArc,
-  Q2RehearsalPriorities,
-  Q3FestivalBag,
-  Q4PulseTest,
-  Q5SustainTest,
-  Q6InterpretiveBudget,
-  Q7RescueRehearsal,
-  Q8DangerSlider,
-];
+const TOTAL_QUESTIONS = 9;
 
 export default function QuizScreen({ questionIndex, onAnswer }: Props) {
-  const QuestionComponent = QUESTIONS[questionIndex];
-  if (!QuestionComponent) return null;
+  const renderQuestion = () => {
+    if (questionIndex < 6) {
+      return (
+        <MCQQuestion
+          question={MCQ_QUESTIONS[questionIndex]}
+          onAnswer={onAnswer}
+        />
+      );
+    }
+    switch (questionIndex) {
+      case 6:
+        return <Q6InterpretiveBudget onAnswer={onAnswer} />;
+      case 7:
+        return <Q1PhraseArc onAnswer={onAnswer} />;
+      case 8:
+        return <Q8DangerSlider onAnswer={onAnswer} />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <motion.div
@@ -43,12 +48,12 @@ export default function QuizScreen({ questionIndex, onAnswer }: Props) {
         <div className="h-[2px] bg-ivory/10 w-full">
           <div
             className="progress-bar"
-            style={{ width: `${((questionIndex + 1) / 8) * 100}%` }}
+            style={{ width: `${((questionIndex + 1) / TOTAL_QUESTIONS) * 100}%` }}
           />
         </div>
         <div className="text-center py-2">
           <span className="text-ivory/30 text-[10px] uppercase tracking-[0.2em]">
-            {questionIndex + 1} of 8
+            {questionIndex + 1} of {TOTAL_QUESTIONS}
           </span>
         </div>
       </div>
@@ -63,7 +68,7 @@ export default function QuizScreen({ questionIndex, onAnswer }: Props) {
           transition={{ duration: 0.4 }}
           className="flex-1 flex flex-col"
         >
-          <QuestionComponent onAnswer={onAnswer} />
+          {renderQuestion()}
         </motion.div>
       </div>
     </motion.div>

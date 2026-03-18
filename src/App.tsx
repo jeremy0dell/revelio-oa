@@ -1,5 +1,3 @@
-"use client";
-
 import { useQuiz } from "@/lib/useQuiz";
 import { AnimatePresence } from "framer-motion";
 import LandingScreen from "@/components/LandingScreen";
@@ -10,7 +8,7 @@ import ResultScreen from "@/components/ResultScreen";
 import MembersScreen from "@/components/MembersScreen";
 import AboutScreen from "@/components/AboutScreen";
 
-export default function Home() {
+export default function App() {
   const { state, setPhase, startQuiz, submitAnswer, restart, showResult } =
     useQuiz();
 
