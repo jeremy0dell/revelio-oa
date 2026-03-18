@@ -1,0 +1,151 @@
+import { MemberProfile, TraitVector } from "./types";
+
+const baseVector = (): TraitVector => ({
+  structuralDiscipline: 0,
+  emotionalWarmth: 0,
+  rhythmicDecisiveness: 0,
+  expressiveDanger: 0,
+  diplomaticInstinct: 0,
+  practicalPreparedness: 0,
+  charismaTheatricality: 0,
+  introspectiveDepth: 0,
+  stabilizingPresence: 0,
+  playfulUnpredictability: 0,
+});
+
+export const members: Record<string, MemberProfile> = {
+  angela: {
+    id: "angela",
+    name: "Angela",
+    instrument: "Violin I",
+    shortArchetype: "The Architecturally Radiant One",
+    resultBody:
+      "You lead not by volume but by conviction. Your phrase peaks arrive exactly when the room needs them, and your instinct is to solve chaos through clarity. You allocated your interpretive budget with unusual precision, favoring elegance and intensity in nearly equal measure. This is the profile of someone who can hold a sustained line while the ground shifts beneath them—and somehow make it look intentional.",
+    greenFlags: [
+      "Impeccable intonation under pressure",
+      "Remembers everyone's birthday",
+      "Will actually read the program notes",
+    ],
+    redFlags: [
+      "May over-prepare",
+      "Secretly judges your bowings",
+      "Has opinions about stand placement",
+    ],
+    rehearsalRole: "The one who gently redirects",
+    repertoireDate: "Late Beethoven by candlelight",
+    targetVector: {
+      ...baseVector(),
+      structuralDiscipline: 0.85,
+      emotionalWarmth: 0.7,
+      rhythmicDecisiveness: 0.65,
+      expressiveDanger: 0.45,
+      diplomaticInstinct: 0.8,
+      practicalPreparedness: 0.75,
+      charismaTheatricality: 0.5,
+      introspectiveDepth: 0.7,
+      stabilizingPresence: 0.8,
+      playfulUnpredictability: 0.3,
+    },
+  },
+  justin: {
+    id: "justin",
+    name: "Justin",
+    instrument: "Violin II",
+    shortArchetype: "The Quietly Devastating One",
+    resultBody:
+      "You are the inner voice the ensemble didn't know it needed. Your phrase arc was patient, your priorities betrayed a deep structural awareness, and you held your sustain test with the quiet resolve of someone who knows the movement isn't over yet. You don't need the melody to matter. Your danger slider landed in the zone we call 'precisely calibrated menace.'",
+    greenFlags: [
+      "Actually listens",
+      "Makes the hard passages look easy",
+      "Brings good snacks",
+    ],
+    redFlags: [
+      "Will not tell you something is wrong until it's too late",
+      "Emotionally available only during slow movements",
+      "Knows your part better than you do",
+    ],
+    rehearsalRole: "The one who hears everything",
+    repertoireDate: "Shostakovich at 2 AM, no talking after",
+    targetVector: {
+      ...baseVector(),
+      structuralDiscipline: 0.7,
+      emotionalWarmth: 0.55,
+      rhythmicDecisiveness: 0.6,
+      expressiveDanger: 0.6,
+      diplomaticInstinct: 0.65,
+      practicalPreparedness: 0.6,
+      charismaTheatricality: 0.35,
+      introspectiveDepth: 0.9,
+      stabilizingPresence: 0.7,
+      playfulUnpredictability: 0.45,
+    },
+  },
+  sharon: {
+    id: "sharon",
+    name: "Sharon",
+    instrument: "Viola",
+    shortArchetype: "The Emotionally Load-Bearing One",
+    resultBody:
+      "You are the harmonic center that everyone leans on without realizing it. Your pulse was steady, your bag was packed for contingencies, and your rehearsal rescue instinct was diplomatic rather than dramatic. You allocated warmth generously and kept danger in reserve—the profile of someone who stabilizes the room simply by being in it. Your phrase arc peaked late, which tells us everything.",
+    greenFlags: [
+      "Emotionally unshakeable",
+      "Has extra rosin and will share it",
+      "Knows when to subdivide without being asked",
+    ],
+    redFlags: [
+      "May absorb everyone else's stress",
+      "Secretly wants more solos",
+      "Will passive-aggressively fix your rhythm",
+    ],
+    rehearsalRole: "The one who keeps it together",
+    repertoireDate: "Brahms, window open, rain outside",
+    targetVector: {
+      ...baseVector(),
+      structuralDiscipline: 0.6,
+      emotionalWarmth: 0.9,
+      rhythmicDecisiveness: 0.55,
+      expressiveDanger: 0.35,
+      diplomaticInstinct: 0.85,
+      practicalPreparedness: 0.8,
+      charismaTheatricality: 0.4,
+      introspectiveDepth: 0.75,
+      stabilizingPresence: 0.9,
+      playfulUnpredictability: 0.25,
+    },
+  },
+  pedro: {
+    id: "pedro",
+    name: "Pedro",
+    instrument: "Cello",
+    shortArchetype: "The Magnetically Uncontainable One",
+    resultBody:
+      "You arrived at this quiz already knowing you'd push the danger slider past advisable limits, and you were right. Your phrase arc was bold, your bag was packed for charisma rather than survival, and your rehearsal instinct was to lead through energy rather than structure. You are the kind of player who turns a run-through into a performance and a performance into an event.",
+    greenFlags: [
+      "Electrifying stage presence",
+      "Will absolutely commit to the bit",
+      "Makes everyone play better by playing fearlessly",
+    ],
+    redFlags: [
+      "May treat tempo markings as suggestions",
+      "Emotionally available exclusively during fortissimo",
+      "Has never once under-interpreted anything",
+    ],
+    rehearsalRole: "The one who makes it exciting",
+    repertoireDate: "Bartók in a thunderstorm, no safety net",
+    targetVector: {
+      ...baseVector(),
+      structuralDiscipline: 0.4,
+      emotionalWarmth: 0.6,
+      rhythmicDecisiveness: 0.75,
+      expressiveDanger: 0.9,
+      diplomaticInstinct: 0.4,
+      practicalPreparedness: 0.35,
+      charismaTheatricality: 0.9,
+      introspectiveDepth: 0.5,
+      stabilizingPresence: 0.35,
+      playfulUnpredictability: 0.85,
+    },
+  },
+};
+
+export const memberList = Object.values(members);
