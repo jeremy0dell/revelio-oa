@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { QuizAnswer } from "@/lib/types";
+import TouchSlider from "./TouchSlider";
 
 const TRAITS = [
   { key: "warmth", label: "Warmth" },
@@ -97,14 +98,12 @@ export default function Q6InterpretiveBudget({ onAnswer }: Props) {
                 {values[key]}
               </span>
             </div>
-            <input
-              type="range"
+            <TouchSlider
               min={0}
               max={TOTAL}
               value={values[key]}
-              onChange={(e) => handleChange(key, parseInt(e.target.value))}
-              className="w-full"
-              aria-label={`${label}: ${values[key]} points`}
+              onChange={(v) => handleChange(key, v)}
+              label={`${label}: ${values[key]} points`}
             />
           </div>
         ))}

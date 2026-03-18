@@ -2,6 +2,7 @@
 import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { QuizAnswer } from "@/lib/types";
+import TouchSlider from "./TouchSlider";
 
 interface Props {
   onAnswer: (answer: QuizAnswer) => void;
@@ -80,14 +81,12 @@ export default function Q8DangerSlider({ onAnswer }: Props) {
       </p>
 
       <div className="w-full max-w-sm px-4 mb-4">
-        <input
-          type="range"
+        <TouchSlider
           min={0}
           max={100}
           value={value}
-          onChange={(e) => handleChange(parseInt(e.target.value))}
-          className="w-full"
-          aria-label={`Danger level: ${value}%`}
+          onChange={handleChange}
+          label={`Danger level: ${value}%`}
         />
       </div>
 

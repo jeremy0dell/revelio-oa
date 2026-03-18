@@ -12,53 +12,56 @@ export default function App() {
   const { state, setPhase, startQuiz, submitAnswer, restart, showResult } =
     useQuiz();
 
-  return (
-    <main className="min-h-dvh flex flex-col">
-      <AnimatePresence mode="wait">
-        {state.phase === "landing" && (
+  const renderPhase = () => {
+    switch (state.phase) {
+      case "landing":
+        return (
           <LandingScreen
             key="landing"
             onBegin={() => setPhase("intro")}
             onAbout={() => setPhase("about")}
           />
-        )}
-
-        {state.phase === "intro" && (
-          <IntroScreen key="intro" onStart={startQuiz} />
-        )}
-
-        {state.phase === "quiz" && (
+        );
+      case "intro":
+        return <IntroScreen key="intro" onStart={startQuiz} />;
+      case "quiz":
+        return (
           <QuizScreen
             key="quiz"
             questionIndex={state.questionIndex}
             onAnswer={submitAnswer}
           />
-        )}
-
-        {state.phase === "analysis" && (
-          <AnalysisScreen key="analysis" onComplete={showResult} />
-        )}
-
-        {state.phase === "result" && state.result && (
+        );
+      case "analysis":
+        return <AnalysisScreen key="analysis" onComplete={showResult} />;
+      case "result":
+        return state.result ? (
           <ResultScreen
             key="result"
             result={state.result}
             onRetake={restart}
             onViewMembers={() => setPhase("members")}
           />
-        )}
-
-        {state.phase === "members" && (
+        ) : null;
+      case "members":
+        return (
           <MembersScreen
             key="members"
             onBack={() => setPhase("result")}
             result={state.result}
           />
-        )}
-
-        {state.phase === "about" && (
+        );
+      case "about":
+        return (
           <AboutScreen key="about" onBack={() => setPhase("landing")} />
-        )}
+        );
+    }
+  };
+
+  return (
+    <main className="min-h-dvh flex flex-col">
+      <AnimatePresence mode="wait">
+        {renderPhase()}
       </AnimatePresence>
     </main>
   );
