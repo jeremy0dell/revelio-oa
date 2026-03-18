@@ -15,8 +15,8 @@ interface Props {
 const MEMBER_EMOJI: Record<string, string> = {
   angela: "🎻",
   justin: "🎻",
-  sharon: "🎶",
-  pedro: "🎻",
+  benjamin: "🎶",
+  russell: "🎻",
 };
 
 export default function ResultScreen({ result, onRetake, onViewMembers }: Props) {

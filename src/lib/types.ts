@@ -12,7 +12,12 @@ export type TraitAxis =
 
 export type TraitVector = Record<TraitAxis, number>;
 
-export type MemberId = "angela" | "justin" | "sharon" | "pedro";
+export type MemberId = "angela" | "justin" | "benjamin" | "russell";
+
+export const ALL_MEMBERS: MemberId[] = ["angela", "justin", "benjamin", "russell"];
+
+/** Direct member-point scores from an MCQ answer */
+export type MCQScore = Partial<Record<MemberId, number>>;
 
 export interface BehavioralTag {
   id: string;
@@ -21,7 +26,10 @@ export interface BehavioralTag {
 
 export interface QuizAnswer {
   questionId: string;
-  traitDeltas: Partial<TraitVector>;
+  /** MCQ answers carry direct member points */
+  memberScores?: MCQScore;
+  /** Weird-input answers carry trait deltas */
+  traitDeltas?: Partial<TraitVector>;
   tags: BehavioralTag[];
   rawData?: Record<string, unknown>;
 }
@@ -41,6 +49,11 @@ export interface MemberProfile {
 
 export interface QuizResult {
   primaryMember: MemberId;
+  /** Raw MCQ tallies (before weighting) */
+  mcqTallies: Record<MemberId, number>;
+  /** Normalized final scores per member (0-1) */
+  finalScores: Record<MemberId, number>;
+  /** Trait scores from weird inputs for flavor text */
   traitScores: TraitVector;
   topTraits: TraitAxis[];
   tags: BehavioralTag[];
